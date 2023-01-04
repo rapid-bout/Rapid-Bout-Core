@@ -1,9 +1,9 @@
 package com.github.rapid_bout.game.card
 import com.github.rapid_bout.game.Zone.Hand
 import com.github.rapid_bout.game.effect.Effect.Effect
-import com.github.rapid_bout.game.effect.action
-import com.github.rapid_bout.game.effect.action.Process
-import com.github.rapid_bout.game.effect.action.Process.RandomSelect
+import com.github.rapid_bout.game.effect.process.Process
+import com.github.rapid_bout.game.effect.process.action.ReturnOfHand
+import com.github.rapid_bout.game.effect.process.select.RandomSelect
 import com.github.rapid_bout.game.{Game, MutableCard, PlayerKey}
 
 object _00009 extends Card {
@@ -19,6 +19,6 @@ object _00009 extends Card {
         duplicate = false
       ),
       // 相手は手札を山札に返す
-      action.ReturnOfHand(game.getOpponent(initiator).key)
+      ReturnOfHand(game.getOpponent(initiator).key)
     )
 }

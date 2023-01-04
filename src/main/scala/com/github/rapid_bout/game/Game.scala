@@ -6,8 +6,9 @@ import scala.util.chaining.scalaUtilChainingOps
 import cats.data.Writer
 import com.github.rapid_bout.game.card.Card
 import com.github.rapid_bout.game.effect.Effect.Effect
-import com.github.rapid_bout.game.effect.action.Process
-import com.github.rapid_bout.game.effect.action.Process.{Action, Select, UserSelect}
+import com.github.rapid_bout.game.effect.process.Process
+import com.github.rapid_bout.game.effect.process.Process.{Action, Select}
+import com.github.rapid_bout.game.effect.process.select.UserSelect
 import com.github.rapid_bout.history
 import com.github.rapid_bout.history.{AddPlayCount, Finish, History, Move, Reverse, ReverseAll}
 import com.github.rapid_bout.util.Exceptions.StackIsEmptyException
@@ -18,6 +19,7 @@ import PlayerKey.Both
 /**
   * ゲーム盤.
   * ゲーム上全ての状態管理を行う
+  *
   * @param players プレイヤーのIDと盤面の組
   * @param playCount このターンにあと何回カードをプレイできるか
   * @param activePlayer ターンプレイヤー

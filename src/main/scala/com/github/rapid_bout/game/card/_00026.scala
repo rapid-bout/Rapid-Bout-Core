@@ -2,8 +2,9 @@ package com.github.rapid_bout.game.card
 
 import com.github.rapid_bout.game.Zone.Field
 import com.github.rapid_bout.game.effect.Effect.Effect
-import com.github.rapid_bout.game.effect.action.Process.{Const, UserSelect}
-import com.github.rapid_bout.game.effect.action.{Process, Reverse}
+import com.github.rapid_bout.game.effect.process.Process
+import com.github.rapid_bout.game.effect.process.action.Reverse
+import com.github.rapid_bout.game.effect.process.select.{Const, UserSelect}
 import com.github.rapid_bout.game.{Game, MutableCard, PlayerKey}
 
 object _00026 extends Card {

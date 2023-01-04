@@ -2,7 +2,8 @@ package com.github.rapid_bout.game.card.archive
 
 import com.github.rapid_bout.game.card.Card
 import com.github.rapid_bout.game.effect.Effect.Effect
-import com.github.rapid_bout.game.effect.action.{AddPlayCount, Process}
+import com.github.rapid_bout.game.effect.process.Process
+import com.github.rapid_bout.game.effect.process.action.AddPlayCount
 import com.github.rapid_bout.game.{Game, MutableCard, PlayerKey}
 
 object _00011_1 extends Card {

@@ -7,8 +7,8 @@ import cats.data.Writer
 import com.github.rapid_bout.game
 import com.github.rapid_bout.game.PlayerKey.{Both, PlayerKeyForUser}
 import com.github.rapid_bout.game.card._
-import com.github.rapid_bout.game.effect.action.Bounce
-import com.github.rapid_bout.game.effect.action.Process.UserSelect
+import com.github.rapid_bout.game.effect.process.action.Bounce
+import com.github.rapid_bout.game.effect.process.select.UserSelect
 import com.github.rapid_bout.game.{Game, MutableCard, Side, Zone}
 import com.github.rapid_bout.history.{Finish, History, Move}
 import com.github.rapid_bout.util.ExSeq.SwapSeq

@@ -3,8 +3,9 @@ package com.github.rapid_bout.game.card.archive
 import com.github.rapid_bout.game.card.Card
 import com.github.rapid_bout.game.effect.Effect.Effect
 import com.github.rapid_bout.game.effect.Term.Forbidden
-import com.github.rapid_bout.game.effect.action.Process.Const
-import com.github.rapid_bout.game.effect.action.{Process, ReturnOfField, ReturnOfStack}
+import com.github.rapid_bout.game.effect.process.Process
+import com.github.rapid_bout.game.effect.process.action.{ReturnOfField, ReturnOfStack}
+import com.github.rapid_bout.game.effect.process.select.Const
 import com.github.rapid_bout.game.effect.{CounterTerm, Term}
 import com.github.rapid_bout.game.{Game, MutableCard, PlayerKey}
 

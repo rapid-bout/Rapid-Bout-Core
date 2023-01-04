@@ -1,10 +1,9 @@
-package com.github.rapid_bout.game.effect.action
+package com.github.rapid_bout.game.effect.process.action
 
 import cats.data.Writer
+import com.github.rapid_bout.game.effect.process.Process.Action
 import com.github.rapid_bout.game.{Game, PlayerKey}
 import com.github.rapid_bout.history.History
-
-import Process.Action
 
 case class ReverseAll(initiator: PlayerKey) extends Action {
   override val name: String = "reverse_all"

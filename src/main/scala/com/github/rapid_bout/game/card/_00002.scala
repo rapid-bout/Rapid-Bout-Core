@@ -2,9 +2,9 @@ package com.github.rapid_bout.game.card
 
 import com.github.rapid_bout.game.Zone.Hand
 import com.github.rapid_bout.game.effect.Effect.Effect
-import com.github.rapid_bout.game.effect.action
-import com.github.rapid_bout.game.effect.action.Process
-import com.github.rapid_bout.game.effect.action.Process.{Const, RandomSelect}
+import com.github.rapid_bout.game.effect.process.Process
+import com.github.rapid_bout.game.effect.process.action.PutOfHand
+import com.github.rapid_bout.game.effect.process.select.{Const, RandomSelect}
 import com.github.rapid_bout.game.{Game, MutableCard, PlayerKey}
 
 object _00002 extends Card {
@@ -16,6 +16,6 @@ object _00002 extends Card {
       // 裏向き
       Const(true),
       // 手札を場に置く
-      action.PutOfHand(game.getOpponent(initiator).key)
+      PutOfHand(game.getOpponent(initiator).key)
     )
 }
