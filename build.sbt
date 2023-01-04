@@ -23,6 +23,8 @@ ThisBuild / semanticdbVersion := scalafixSemanticdb.revision
 ThisBuild / libraryDependencySchemes += "org.scala-lang.modules" %% "scala-xml" % VersionScheme.Always
 ThisBuild / Test / coverageEnabled := true
 
+target in Compile in doc := baseDirectory.value / "docs/scaladoc"
+
 lazy val root = (project in file("."))
   .settings(
     name := "Rapid Bout Core",
