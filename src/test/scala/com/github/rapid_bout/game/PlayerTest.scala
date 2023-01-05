@@ -8,12 +8,12 @@ import com.github.rapid_bout.game.effect.Effect.DoNothing
 import com.github.rapid_bout.util.ExSeq.SwapSeq
 import com.github.rapid_bout.util.Exceptions.StackIsEmptyException
 import helper.DeckTemplate
+import helper.ToMutableCard.ToMutableCard
 import org.mockito.{ArgumentMatchers, Mockito}
 import org.scalatest.BeforeAndAfter
 import org.scalatest.funsuite.AnyFunSuite
 
 import PlayerKey.PlayerKeyForUser
-
 class PlayerTest extends AnyFunSuite with BeforeAndAfter {
 
   private val game = Mockito.mock(classOf[Game])
@@ -463,6 +463,65 @@ class PlayerTest extends AnyFunSuite with BeforeAndAfter {
       assert(player.hand.hands.map(_.card) == Seq.empty)
       assert(player.stack.isEmpty)
       assert(player.field.fields == Seq.empty)
+    }
+  }
+
+  test("reverse: 裏向きのカードを表向きにする") {
+    create pipe { player =>
+      player.copy(field = player.field.append(_00001, Side.Back))
+    } pipe { player =>
+      player.reverse(Seq(0), isReverse = None)
+    } pipe { player =>
+      player.field.fields match {
+        case Seq((card, Side.Front)) =>
+          assert(_00001 == card.card)
+          assert(player.count() == _00001.point)
+        case _ => fail("追加されたカードが不正な状態")
+      }
+    }
+  }
+
+  test("reverseAllWithFront: 混在する場合は表向きのカードのみ裏返す") {
+    create pipe { player =>
+      player.copy(field = player.field.append(_00001, Side.Front).append(_00002, Side.Back))
+    } pipe { player =>
+      player.reverseAllWithFront()
+    } pipe { player =>
+      player.field.fields match {
+        case Seq((card1, Side.Back), (card2, Side.Back)) =>
+          assert(_00001 == card1.card)
+          assert(_00002 == card2.card)
+          assert(player.count() == 4)
+        case _ => fail("追加されたカードが不正な状態")
+      }
+    }
+  }
+
+  test("reverseAll: 全てのカードを裏返す") {
+    create pipe { player =>
+      player.copy(field = player.field.append(_00001, Side.Front).append(_00002, Side.Back))
+    } pipe { player =>
+      player.reverseAll()
+    } pipe { player =>
+      player.field.fields match {
+        case Seq((card1, Side.Back), (card2, Side.Front)) =>
+          assert(_00001 == card1.card)
+          assert(_00002 == card2.card)
+          assert(player.count() == 2 + _00002.point)
+        case _ => fail("追加されたカードが不正な状態")
+      }
+    }
+  }
+
+  test("couterable: 非カウンターカード") {
+    create pipe { player =>
+      player.copy(hand = player.hand.append(_00001))
+    } pipe { player =>
+      assert(!player.counterable(
+        game,
+        index = 0,
+        willPlay = _00001
+      ))
     }
   }
 
